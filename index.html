@@ -12,11 +12,19 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        sans-serif;
       background: #f3f5f7;
       color: #243040;
       line-height: 1.65;
@@ -32,7 +40,10 @@
       color: white;
       text-align: center;
       background:
-        linear-gradient(rgba(8, 47, 83, 0.72), rgba(8, 47, 83, 0.82)),
+        linear-gradient(
+          rgba(8, 47, 83, 0.72),
+          rgba(8, 47, 83, 0.85)
+        ),
         url("https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1600&q=80")
         center / cover;
     }
@@ -72,6 +83,10 @@
     main {
       width: min(920px, calc(100% - 28px));
       margin: 28px auto 70px;
+    }
+
+    section {
+      scroll-margin-top: 85px;
     }
 
     .day-header {
@@ -137,7 +152,7 @@
 
     .tip {
       margin-top: 12px;
-      padding: 11px 13px;
+      padding: 12px 14px;
       border-left: 4px solid #e39b19;
       border-radius: 8px;
       background: #fff8e7;
@@ -146,12 +161,19 @@
     .map-button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       margin-top: 12px;
-      padding: 9px 14px;
+      padding: 10px 15px;
       color: white;
       font-weight: 700;
       border-radius: 9px;
       background: #247245;
+      transition: 0.2s;
+    }
+
+    .map-button:hover {
+      background: #185b34;
+      transform: translateY(-1px);
     }
 
     .restaurant-grid {
@@ -200,6 +222,13 @@
       background: #eaf4ec;
     }
 
+    .placeholder {
+      padding: 20px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 7px 22px rgba(29, 48, 66, 0.08);
+    }
+
     footer {
       padding: 25px;
       color: #68727d;
@@ -218,6 +247,10 @@
 
       .event::before {
         left: -33px;
+      }
+
+      .event {
+        padding: 17px;
       }
     }
   </style>
@@ -255,28 +288,43 @@
           <span class="time">15:05</span>
           <h3>🚗 抵達岡山機場＆租車</h3>
           <p>預計完成取車後於 16:15 左右出發。</p>
-          <p><strong>岡山機場 → 倉敷飯店：約40–45分鐘</strong></p>
+          <p>
+            <strong>岡山機場 → 倉敷飯店：約 40–45 分鐘</strong>
+          </p>
 
           <div class="tip">
-            11人分乘2台車，請備妥台灣駕照及日文譯本。
-            取車後直接前往倉敷，避免往返。
+            11 人分乘 2 台車，請備妥台灣駕照及日文譯本。
+            取車後直接前往倉敷，避免折返。
           </div>
         </article>
 
         <article class="event">
           <span class="time">17:00</span>
           <h3>🏨 飯店 Check-in</h3>
+
           <p>
             <strong>
               Hotel Livemax Okayama Kurashiki Station
             </strong>
           </p>
-          <p>連住三晚，建議先將旅客及行李放在飯店，再由駕駛前往停車。</p>
+
+          <a
+            class="map-button"
+            href="https://maps.app.goo.gl/yztv8UFSkVg5gqoW7?g_st=ic"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📍 飯店 Google Maps
+          </a>
+
+          <p style="margin-top: 16px;">
+            建議先將同行旅客及行李放在飯店，再由駕駛前往附近停車場。
+          </p>
 
           <div class="tip">
-            🅿️ 住宿附近停車場最高收費：
-            <strong>12小時 830日圓</strong><br />
-            超過12小時的費用請以停車場現場標示為準。
+            🚗 <strong>附近停車場</strong><br />
+            最高收費：<strong>12 小時 830 日圓</strong><br />
+            超過 12 小時後，請依現場費率計算。
           </div>
 
           <a
@@ -285,8 +333,13 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            📍 開啟停車場地圖
+            📍 停車場 Google Maps
           </a>
+
+          <div class="tip">
+            ✅ 連住三晚，不需每天搬運行李。<br />
+            ✅ 建議先卸下行李與安頓同行旅客，再前往停車。
+          </div>
         </article>
 
         <article class="event">
@@ -297,10 +350,14 @@
             <div class="restaurant">
               <h4>選手一｜Yakiniku Griglia</h4>
               <div class="rating">Google 評分 4.2</div>
-              <p>位於 Ario Mall 的燒肉店，牛、豬、雞皆有。</p>
+
+              <p>
+                位於 Ario Mall 裡面的燒肉店，牛、豬、雞皆有。
+              </p>
+
               <span class="tag">可線上訂位</span>
-              <span class="tag">適合多人</span>
               <span class="tag">燒肉</span>
+              <span class="tag">適合多人</span>
 
               <br />
 
@@ -317,12 +374,18 @@
             <div class="restaurant">
               <h4>選手二｜梅之木味噌豬排</h4>
               <div class="rating">Google 評分 4.3</div>
-              <p>1980年創立的米其林推薦排隊老店。</p>
-              <p class="warning">
-                不可訂位，建議17:00開門前後就開始排隊。
+
+              <p>
+                1980 年創立的米其林推薦排隊老店。
               </p>
+
+              <p class="warning">
+                不可訂位，建議 17:00 開門前後就開始排隊。
+              </p>
+
               <span class="tag">味噌豬排</span>
-              <span class="tag">排隊名店</span>
+              <span class="tag">排隊老店</span>
+              <span class="tag">米其林推薦</span>
 
               <br />
 
@@ -339,7 +402,11 @@
             <div class="restaurant">
               <h4>選手三｜紬咖啡</h4>
               <div class="rating">Google 評分 4.7</div>
-              <p>日本定食，牛、豬、雞、魚料理皆有。</p>
+
+              <p>
+                日本定食，牛、豬、雞、魚料理都有，親子友善。
+              </p>
+
               <span class="tag">親子友善</span>
               <span class="tag">日本定食</span>
               <span class="tag">選擇多</span>
@@ -359,13 +426,15 @@
             <div class="restaurant">
               <h4>選手四｜Kyushu Damashii</h4>
               <div class="rating">Google 評分 4.0</div>
+
               <p>
-                居酒屋料理，牛、豬、雞、魚及馬肉都有。
+                居酒屋料理，牛、豬、雞、魚及馬肉皆有。
                 小朋友可選鍋物、飯類或麵類。
               </p>
+
               <span class="tag">可線上訂位</span>
               <span class="tag">居酒屋</span>
-              <span class="tag">親子可用餐</span>
+              <span class="tag">兒童可用餐</span>
 
               <br />
 
@@ -384,11 +453,20 @@
         <article class="event">
           <span class="time">晚餐後</span>
           <h3>🛒 Marunaka 超市採買</h3>
+
           <p>
-            <strong>Marunaka マルナカ倉敷駅前店</strong>
+            <strong>
+              Marunaka マルナカ倉敷駅前店
+            </strong>
           </p>
-          <p>營業至晚上 <strong>23:00</strong>。</p>
-          <p>可購買水果、飲料、零食、宵夜及隔天早餐。</p>
+
+          <p>
+            營業至晚上 <strong>23:00</strong>。
+          </p>
+
+          <p>
+            可購買水果、飲料、零食、宵夜及隔天早餐。
+          </p>
 
           <a
             class="map-button"
@@ -396,56 +474,59 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            📍 開啟超市地圖
+            📍 超市 Google Maps
           </a>
         </article>
 
         <article class="event">
           <span class="time">晚上</span>
           <h3>🌙 返回飯店休息</h3>
-          <p>結束第一天行程，準備隔天前往岡山市區。</p>
+          <p>
+            結束第一天行程，準備隔天前往岡山市區。
+          </p>
         </article>
       </div>
 
       <div class="summary">
         <strong>Day 1 重點</strong>
         <p>
-          機場取車後直接前往倉敷入住。晚餐依抵達時間與現場狀況四選一，
-          晚餐後再到 Marunaka 購買宵夜及隔天早餐。
+          機場取車後直接前往倉敷入住。晚餐依抵達時間、
+          體力與排隊狀況四選一，晚餐後再到 Marunaka
+          購買宵夜及隔天早餐。
         </p>
       </div>
     </section>
 
-    <section id="day2" style="margin-top: 60px">
+    <section id="day2" style="margin-top: 60px;">
       <div class="day-header">
         <h2>8/21（五）Day 2</h2>
         <div>岡山後樂園、岡山城與購物</div>
       </div>
 
-      <div class="event">
-        <p>Day 2 行程內容之後加入。</p>
+      <div class="placeholder">
+        Day 2 行程內容之後加入。
       </div>
     </section>
 
-    <section id="day3" style="margin-top: 60px">
+    <section id="day3" style="margin-top: 60px;">
       <div class="day-header">
         <h2>8/22（六）Day 3</h2>
         <div>倉敷美觀地區與鷲羽山</div>
       </div>
 
-      <div class="event">
-        <p>Day 3 行程內容之後加入。</p>
+      <div class="placeholder">
+        Day 3 行程內容之後加入。
       </div>
     </section>
 
-    <section id="day4" style="margin-top: 60px">
+    <section id="day4" style="margin-top: 60px;">
       <div class="day-header">
         <h2>8/23（日）Day 4</h2>
         <div>吉備津神社與返程</div>
       </div>
 
-      <div class="event">
-        <p>Day 4 行程內容之後加入。</p>
+      <div class="placeholder">
+        Day 4 行程內容之後加入。
       </div>
     </section>
   </main>
